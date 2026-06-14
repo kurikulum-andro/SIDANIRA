@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Peringkat SIDANIRA | SMPN 247 Jakarta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(125deg, #eef2f9 0%, #e0e9f4 100%);
+      padding: 2rem 1.5rem;
+      color: #1a2c3e;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* header modern */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #1f5e8c, #134b6f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero h1 i {
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      color: #2c7da0;
+      font-size: 2rem;
+    }
+
+    .sub {
+      color: #2c5a74;
+      font-weight: 500;
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    /* stat card grid */
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 1rem 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 0 0 1px rgba(255,255,255,0.5);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+
+    .stat-card i {
+      font-size: 1.7rem;
+      color: #2c7da0;
+    }
+
+    .stat-label {
+      font-weight: 600;
+      color: #1f4e6e;
+    }
+
+    .stat-value {
+      font-weight: 800;
+      font-size: 1.7rem;
+      color: #0f3b54;
+      line-height: 1;
+    }
+
+    /* tabel premium */
+    .table-wrapper {
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: #1f5e8c;
+      color: white;
+      padding: 1rem 0.8rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+    td {
+      padding: 0.9rem 0.8rem;
+      border-bottom: 1px solid #eef2f8;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #f8fbfe;
+    }
+
+    /* peringkat dengan medali */
+    .rank-cell {
+      font-weight: 800;
+      text-align: center;
+      width: 70px;
+    }
+
+    .rank-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      font-weight: 800;
+      background: #eef2fa;
+      color: #1f5e8c;
+    }
+
+    .rank-1 {
+      background: linear-gradient(145deg, #ffd966, #ffb347);
+      color: #4a2e00;
+      box-shadow: 0 2px 8px rgba(255,180,0,0.3);
+    }
+
+    .rank-2 {
+      background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
+      color: #2c2c2c;
+    }
+
+    .rank-3 {
+      background: linear-gradient(145deg, #e0b07f, #cd7f32);
+      color: #2f1d0a;
+    }
+
+    .nama-siswa {
+      font-weight: 700;
+      color: #1f3e54;
+    }
+
+    .nilai-badge {
+      font-weight: 800;
+      background: #eef2fa;
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #1f5e8c;
+    }
+
+    .smt-badge {
+      font-family: monospace;
+      font-weight: 600;
+      background: #f4f7fb;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #5e7e97;
+    }
+
+    @media (max-width: 800px) {
+      body { padding: 1rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .stat-value { font-size: 1.2rem; }
+      th, td { font-size: 0.7rem; padding: 0.5rem 0.3rem; }
+      .rank-number { width: 30px; height: 30px; font-size: 0.8rem; }
+      .nilai-badge { font-size: 0.7rem; padding: 0.1rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>
+      <i class="fas fa-crown"></i> 
+      Peringkat Nilai SIDANIRA
+      <i class="fas fa-chart-line"></i>
+    </h1>
+    <div class="sub">SMP Negeri 247 Jakarta Selatan · Rata-rata Semester 1–5 (Tertinggi → Terendah)</div>
+  </div>
+
+  <div class="stats-grid" id="statsGrid"></div>
+
+  <div class="table-wrapper">
+    <table id="rankingTable">
+      <thead>
+        <tr>
+          <th>Peringkat</th>
+          <th>Nama Peserta Didik</th>
+          <th>Nilai SIDANIRA</th>
+          <th>SMT 1</th>
+          <th>SMT 2</th>
+          <th>SMT 3</th>
+          <th>SMT 4</th>
+          <th>SMT 5</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <footer>
+    <i class="fas fa-chart-simple"></i> Berdasarkan data resmi SIDANIRA · Rata-rata 5 semester
+  </footer>
+</div>
+
+<script>
+  // Data siswa lengkap (noUrut hanya untuk referensi internal, TIDAK DITAMPILKAN)
+  // [noUrut, nama, smt1, smt2, smt3, smt4, smt5]
+  const rawData = [
+    [1,"ADINDA SALSABILA NAFITRI",78.17,77,79,79.83,81.5],
+    [2,"ADITIA PUTRA MUBAROK",83.17,87.67,86,87.83,87.17],
+    [3,"ADLI FATURAHMAN",74.67,74.5,75.67,78.17,76.83],
+    [4,"AGAFI ASIR VADA",77.33,80.83,77.17,79.5,80.67],
+    [5,"AHMED SULTAN DZAKI",84.67,86,86,89,89.33],
+    [6,"AISAH AINUN NISA",87.83,86.83,84.67,86.17,89],
+    [7,"AISHA ZAHRA RATIFA",83.33,82.33,83,85.67,86],
+    [8,"AMIR HIDAYAT",77.33,74.33,76,77.83,82.83],
+    [9,"ANDHIKA SATRIA PRATAMA",76.33,74.83,80,80.17,80.17],
+    [10,"BALQIS KHAIRUNNISA",81.5,80.83,82.83,84,89.33],
+    [11,"CANDRA KUSUMA",75.17,74.5,78.5,78.33,78.33],
+    [12,"CHIKA ARLIE JASMINE",81.5,82.83,82.83,86.67,85.5],
+    [13,"DESTIANINGSIH",77.83,76.83,80.17,81.17,83.83],
+    [14,"DESWITA PUTRI",77.83,76.83,80.17,81.17,82.05],
+    [15,"ELVIRA CELIASARI",81.17,83.5,84.83,88.5,88.67],
+    [16,"FANIA DWI PUTRI",82.17,83.5,84.83,87.67,87.33],
+    [17,"KEISYA AYUDYA PRATIWI",81.67,83.33,84.5,85.83,87],
+    [18,"MUHAMMAD BAGUS KURNIAWAN",77,78.67,75.83,79,82.17],
+    [19,"MUHAMMAD ALI RAMDAN",78.83,76.67,78.33,79.33,79.5],
+    [20,"MUHAMMAD ALZAM HADDAYA . K",81.17,84.33,82.17,84,83.5],
+    [21,"MUHAMMAD AZMI ALLAEL",75,73.05,76.33,76,77.83],
+    [22,"MUHAMMAD FAJAR HAFIZD",79.67,76.17,79,82.5,85.17],
+    [23,"MUHAMMAD RAMADHAN",78,79.17,81.33,83,83.5],
+    [24,"MUTIA SEPTRIANI",82.17,81.33,82.67,85.17,85.5],
+    [25,"MUTIARA SUFI AZZAHRA",79.83,77.17,81.17,83.17,83.17],
+    [26,"NATASYA ALIVIKA",79.83,78.33,81.33,82.17,83],
+    [27,"NURUL SYIFFA",75.83,74.05,75.33,74.17,76],
+    [28,"PUTRI AYU AWIDIYA",76.5,78.67,81.33,83.17,83.83],
+    [29,"RESNU TEGAR WICAKSONO",80.83,80.67,78.83,81.83,83.83],
+    [30,"RIZKA PUTRI ZIFARA",78.33,79.67,79.83,81.83,84.83],
+    [31,"SABRINA MARDIANTI",81.67,84.67,87.67,91.17,92],
+    [32,"SALWA SASMITA",84.33,82.33,83.67,84.33,84.83],
+    [33,"SATRIA ALVANDI",80.17,76.5,78.33,80,80.83],
+    [34,"ULFA NUR FADILLA",79.67,79.33,79.33,82,83.67],
+    [35,"WAHYU SANJAYA PUTRA",80.83,82.67,83.67,85.33,83.33],
+    [36,"AHMAD FAKHRI",75.83,76.33,77,78.5,77],
+    [37,"AISYAH WADIATUL KARIMA",85.17,84.33,83.5,85.67,86.17],
+    [38,"ALINA LATIFAH",85.17,84.33,86.83,88.5,88.33],
+    [39,"ALKHANSA CRYSANT",87.17,87,87,88.5,89.17],
+    [40,"ANNISA PUTRI",80.83,85.33,82,84.83,85],
+    [41,"ATHIRAH SALSABILLA",80.83,81,82.67,85.5,82.83],
+    [42,"ATIKA ZAHRA",77.17,78,82.17,82.83,80.67],
+    [43,"AUDIENA NUR FITRIYANI HAFIDZ",80.83,82.17,85,85.67,85.67],
+    [44,"CALVIN JANTRICO PIRGO",78.5,78.17,83,86.83,86.83],
+    [45,"CITRA NAYLA RAHMADANI",81.5,82.83,84.17,85.17,85],
+    [46,"EZRA MALAEKHI WALID",77.83,75.33,77.5,79.17,77.33],
+    [47,"GUSTI FAQIH RAMADHAN",75.5,75.67,80,80.17,80.5],
+    [48,"HAURA HAFIDZAH BALQIS",81.67,81,82.33,86.17,85.83],
+    [49,"IHSAN FAUZI",78.17,81.83,79.83,81,81.33],
+    [50,"ILIA HASBI",74.83,73.67,76.67,78,76.83],
+    [51,"JIHAN RAMADHANI",77.33,79.33,81.83,83.67,84.17],
+    [52,"KEISYAH RAYA PUTRI",77.67,77.17,81.83,83.67,82.67],
+    [53,"KHAYLA FITRI SEPTIYANA",76.83,77.33,81.83,83.17,83],
+    [54,"LUTFIYAH KEYSHA ABDANYS",87.33,88.33,85.5,87.5,87.33],
+    [55,"MUHAMMAD HAIKAL",83.33,84.5,77.5,81.17,79.17],
+    [56,"MUHAMMAD RAFA",78,75,75.5,75.17,76.5],
+    [57,"MUHAMMAD DAFFA",78.17,75,77.67,77,78.33],
+    [58,"MUHAMMAD NAJMI AKHDAN . F",77,76.83,80.5,82.83,80.5],
+    [59,"MUHAMMAD RAMDHANI",76.17,73.5,74.83,74.83,75.33],
+    [60,"MUHAMMAD RIZKY PRASETYO",76,74.5,76.67,77.33,79.67],
+    [61,"NAFLA RAMADHANI SAFITRI",88.5,89.17,83.5,87,88.67],
+    [62,"NAZILA ARSA GITA",77.17,78.67,79.33,81.67,80.5],
+    [63,"NIKEN ARYANTI",79.5,75.5,79.67,80.33,79.17],
+    [64,"NOVA APRILIANO",79.83,81.33,83.83,83.33,87.5],
+    [65,"RAKA SIWI BINTANG PUTRA",79.33,78.83,79.83,80.67,80.5],
+    [66,"REIHAN SEPTIANO",80,79,80.5,81.33,81.83],
+    [67,"SARAH SALSA BILLA",77.33,75.33,79,81.17,82.5],
+    [68,"SYAVIRA NUR FITRIA",79.33,79.5,79.83,81.5,81.5],
+    [69,"TABINA JULIA RISKIANI",86.67,90.33,87.83,90.83,91.83],
+    [70,"ANASYA MAULIDINA",84.83,86.5,87,88.83,92.17],
+    [71,"APRILIA RATU AZZAHRA",84.17,87,89.83,89.83,91.67],
+    [72,"ARYA MAULANA RAMADHAN",79.5,78.17,79.17,80.33,84.33],
+    [73,"ASYANDA KANAYA IDRIS",78,78.67,81.83,83,85.17],
+    [74,"AYUNING PRATIWI",82.17,84.33,82.33,83.33,84.67],
+    [75,"AZAMI FAHLEVI YANUAR",81.67,82.33,82.5,84.67,85.67],
+    [76,"CAHYANA DHANI NUGRAHA",83.5,83.33,84.83,85.83,83.83],
+    [77,"CHANDRA IRAWAN",75.17,76.17,76.83,80.17,78.5],
+    [78,"DEWI MAHARANI",77.5,76.17,79.83,82,81.67],
+    [79,"DHAWIL NURUL AINI",80,79.5,82,82.83,81.67],
+    [80,"DZIKRA FADILLAH",77.67,77.5,81.17,82.83,84],
+    [81,"FADHLI HASAN",75.83,76.33,79.67,79,79],
+    [82,"FATIMAH SALMA RAMADHANI",82.17,75.83,79.5,80.5,81.83],
+    [83,"HAURA MAULIDA",86.67,85,85.83,88.83,87.83],
+    [84,"KAFKHA HAFISHA",82.33,81.17,84.33,87,86.5],
+    [85,"KAILA AZALIA AFLAH",75.67,76.67,81.17,81.83,83.67],
+    [86,"MUHAMMAD ADIEL AKHDAN",75.67,77.5,77.5,78.17,76.17],
+    [87,"MUHAMMAD DENTA LEGSA NUR . A",77,80.17,83.33,84.17,84.17],
+    [88,"MUHAMMAD FADHEL HADZAMI",75.17,75,75.17,77.17,78.33],
+    [89,"MUHAMMAD IMAMUL MUTTAQIN",79.83,81,84.17,87.33,88.83],
+    [90,"MUHAMMAD RAIHAN",75.67,75.5,77,76.5,77],
+    [91,"MUHAMMAD RIZKI",75.5,76.67,79.5,81.33,80.5],
+    [92,"MUHAMMAD YAHDIS SABIL BESTMAN",77.33,76.5,78.33,78,79.17],
+    [93,"NAFASYA AINUN NISSA",89.33,90.67,84.5,88.17,92],
+    [94,"NAUFAL MIQDAAD RAMADHAN",76.67,77.33,82.5,84,83.83],
+    [95,"NAYSLLA SENJA SALSABILAH",77.83,78,81,83,81.67],
+    [96,"NUR RISMA AULIA",84.83,83.83,83.83,85.67,87.5],
+    [97,"RAIHAN AZZAMI",74,73,76,77,78.17],
+    [98,"SHARON MARFY METIARY",83.67,82.5,83.33,83.83,84.83],
+    [99,"SYAHPUTRI AKIFAH NAILA",80.33,82,82.5,84.33,88.17],
+    [100,"SYAHRUL ADHA SETIAWAN",76.5,74.5,76.17,77,78.67],
+    [101,"SYAWALIA ALISYA",83.33,83,83.5,84.83,86.83],
+    [102,"THALITA RIZKY RAHMADANI",83.5,77,81,82.67,82.83],
+    [103,"ZAHRATUL JANNAAH",81.83,81.5,82,84.5,85.67],
+    [104,"AISYA MULYA PRAMESTI",77.67,79.83,82.33,83.17,85.33],
+    [105,"ALDIANYAH FABI PUTRA GAUTAMA",77.33,77.5,78,78.83,78.33],
+    [106,"ALIFAH KAMILA",78.17,79.67,81,85,83.67],
+    [107,"AMANDA APRILIA",75,74,79,79.83,79.05],
+    [108,"ANINDYA ATHAR ARYASATYA . F",86.17,86,84.83,82.5,85.67],
+    [109,"AURA SYAKILA RAMADHANI",79.5,79.17,81,84.67,84.5],
+    [110,"BELLA EKA PUTRI",80.17,80,82.67,83.5,85.33],
+    [111,"BRANDON STEVENEL SIMEON . H",87.5,86.67,86.5,88.67,84.67],
+    [112,"CANDRA WIJAYA",75.5,74.5,79.5,78,78.17],
+    [113,"CITRA PUTRI INDRIANA",80.67,82.5,83.83,84,84.33],
+    [114,"FAEZYA NABILLA",88.67,92,88.5,91.67,91],
+    [115,"FAHMI RAMADAN",75.5,75.67,76.17,77.83,82.17],
+    [116,"FATTAN DJUMAIDI",75.5,75,77.33,79.33,82.33],
+    [117,"FITRI YOSI SEPTIAWATI",86.83,85.5,82.67,84,85.17],
+    [118,"JASMINE AISYAH SAFIRA",77.83,75.83,81,82,82.5],
+    [119,"JESIKA OKTAVIANI",77,79,77.33,80.67,81.33],
+    [120,"KAYLA",82,85.5,85.17,88.5,88],
+    [121,"KHALIESHAH ARROHIM",79.83,85.33,85.67,87.67,85],
+    [122,"MOHAMMAD HAYKAL RAMADHAN",79.83,79.33,79.67,81.5,83.83],
+    [123,"MUHAMMAD FIKI",77.67,74.5,80.67,83.5,86],
+    [124,"MUHAMMAD ALBI FEBIAN",73.17,73,74.5,75.67,75.83],
+    [125,"MUHAMMAD FADHIL RAHARJO",78.83,81.33,81.33,83.5,83.67],
+    [126,"MUHAMMAD FAHRYSAN NUR RIZKY",78.67,77.67,79.83,81.17,82.33],
+    [127,"MUHAMMAD HAMDI ASHIDQI",77.67,73.33,77.5,79.33,76.67],
+    [128,"MUHAMMAD RAFQI AKBAR",81,84.17,85.83,88.67,86.33],
+    [129,"MUHAMMAD ROFI",75.83,78.83,82.17,82.17,83],
+    [130,"NURUL NADZIFAH AMINI",79.33,81.17,83.17,85.5,87.17],
+    [131,"RAYSA RAHMAWATI",83.17,80.5,81.83,84.67,85.33],
+    [132,"RINTARO REZKY PRATAMA",81.5,81.67,78.5,80.5,81.33],
+    [133,"SALMAN AL FARIZI",76.17,76.5,77.83,78.5,78.5],
+    [134,"SITI KHODIJAH",73.83,73.83,75.83,75.5,76.83],
+    [135,"SITI NUR NIRMALASARI",78.5,81.5,83.33,85.5,87.17],
+    [136,"ZAHRA ALTHOFUNNISA",80.83,85.5,84.67,87.17,85.67],
+    [137,"ZALFA KHAIRUNNISA",84,83.5,85.17,86,89.33],
+    [138,"ABD.ARYANTO",76.5,76.83,77.17,78.67,81.83],
+    [139,"ADINDA MUTIARA HARTANTI",80.83,81.83,82.5,85,86.33],
+    [140,"AHMAD FAHRIANYAH",76.33,76,79.67,80.33,80],
+    [141,"AMANDA ALYA PUTRI",82.33,82,81.5,84.83,85.5],
+    [142,"ANASYA NIMASKURI",84.67,87.33,84.5,86.17,88.83],
+    [143,"AULIA AZZAHRA DWI ANUGRAH",79.05,80.67,82.33,83.67,87.05],
+    [144,"AUREL RISKA RAHMADHANI",78.17,79.17,81.67,85.33,84],
+    [145,"BILQIS AIRA PUTRI",78.67,78.67,82,82.5,82.5],
+    [146,"DIMITRI AL HADI WIJAYA",80,79.33,80,84.33,82.33],
+    [147,"FATIH LINTANG HERMAWAN",84.5,84.17,81.17,83.17,82.33],
+    [148,"HAFIZ AZRIL PRASTYAWAN",73.17,73.5,75.33,76,76.33],
+    [149,"IBRAHIM AL KHATIRI",82.33,84.83,83.83,87.33,87.83],
+    [150,"INTAN NUR AINI",81.67,82.67,82.17,84.5,85.83],
+    [151,"KAHLILA SEPTIANA",79.5,80.33,84.83,86.17,83.33],
+    [152,"KAYYISA AQILA HANANISA",83.83,83.83,87,89,87],
+    [153,"M . FIKRI",76,74.83,77.33,80,83],
+    [154,"MUHAMMAD FAHRUDIN",76.5,75.67,80.33,81,82.67],
+    [155,"MUHAMMAD FATHIR",75.33,77.17,77.33,76.17,77.67],
+    [156,"MUHAMMAD REVALT SAINS",75.83,76.83,79.17,79.5,80.5],
+    [157,"MUHAMMAD RIFQI",76.67,73.67,75.83,75.67,80.5],
+    [158,"NABILA SAFITRI",84.83,85.5,82.67,83.67,88.17],
+    [159,"NADA ALIKA HIRMANI",87.33,79,84.67,86.33,87.33],
+    [160,"NADJMA IFA AINI",84.67,82.83,83.67,84.17,88.17],
+    [161,"NOER SAPHIRA AZZAHRA",76.17,77.17,78,78.33,82],
+    [162,"QUEEN ALYSA RAMADHANI",79.67,80.67,83.67,85.5,84.33],
+    [163,"RAFFA PRATAMA",78.5,78.17,79.33,81.17,82.17],
+    [164,"REYSEN SIFIWAN PUTRA",88.5,90,85.5,89.67,89.17],
+    [165,"REZA FAHREZY DESTRYANSAH",81.5,77.83,79,77.67,78.67],
+    [166,"RIFA MUTIA AZZAHRA",82,85.17,83.83,88,86.5],
+    [167,"RYANDRA BAYU SAMUDRA",72.67,73.17,75.83,75.5,77.83],
+    [168,"SAFTA TRIANA ISNAINI",81.83,82.05,83.17,84.83,82.83],
+    [169,"SAILA OKTAVIA RAHMAH",74.17,73.33,75.67,74.67,76.33],
+    [170,"SALWA SALSABILAH BESTAMAN",78.5,78,81.17,81.67,81.17],
+    [171,"SYIFA AULIA",76.33,75.5,78.83,78.67,78.17],
+    [172,"AIRA DINDA RAMADHANI",79.83,80.5,82.5,82.83,81.67],
+    [173,"AISYAH RAMADHANI",87.33,89.33,85.83,89.33,87.17],
+    [174,"ALIF SWALUDIN SETIAWAN",73.67,73.17,76,74.83,75],
+    [175,"ALYA ROHALI",77.67,80.5,81.33,82.83,85.83],
+    [176,"ANNISA LYLA NUR RAHMAN",86.33,87.67,86.5,91.33,90.17],
+    [177,"ARBY MOHAMMAD KHADFY",75,74,76,76.5,79.67],
+    [178,"ASHIRA SHALLUM ZAINI",85.83,89.17,85.67,89,88.5],
+    [179,"AZZAHRA PUTRI AULIA",82.67,82,85.83,86.33,88.33],
+    [180,"BAGUS IBNU SYABAN",71.83,73.17,75.67,74.33,79.17],
+    [181,"CHIKAL RAMADHANI",81.83,81.33,84.17,86.83,87.17],
+    [182,"ELVANIE YUSNIA PUTRI",81,78.5,80.67,83.67,84.83],
+    [183,"FAIZ ZAIDAN",80.83,81.5,81.67,84,81.33],
+    [184,"FATAHILLAH FAUZAN",75.5,73.67,78.5,80.5,80],
+    [185,"HILDA AULIA PUTRI",77.33,76.5,79.33,81.67,83.33],
+    [186,"ILHAM GHIFARI",80.17,80.33,82.67,84.83,84.17],
+    [187,"KEYSHA YAZIDA",77.67,75.83,78.5,80.17,81.17],
+    [188,"KHARISA UMAMI",82.67,84.83,85.17,88.33,87.83],
+    [189,"MUHAMMAD ALIF HABI",77.83,79,78.5,82.67,84.5],
+    [190,"MUHHAMAD ADL DYIAUL LAMI",79.83,82.83,83.33,85.5,84],
+    [191,"MUHAMMAD CAESAR SAFKA I",79.67,80.67,78.67,78.83,83.5],
+    [192,"MUHAMMAD FAQIH SYALABI",81.33,83.17,85.67,85.83,83],
+    [193,"MUHAMMAD IRSYAD ABQORY",78.17,75.67,77.83,78.67,79.33],
+    [194,"MUHAMMAD RAFA NAYAKA",82.5,85.5,82,85.17,82.17],
+    [195,"MUHAMMAD SYAWAL",73.83,73.33,75.33,76.67,78.33],
+    [196,"NICO NOVIANSYAH",77.17,75.5,77.67,80,79],
+    [197,"NUR AFIFAH RAMADHANI",87.67,84.17,85.83,88.17,87],
+    [198,"NUR ZAHRA RAMADANI",80.33,79,82,83.67,83.67],
+    [199,"RESTU IHZA PERDANA",86.83,81.17,84.17,87.17,88.83],
+    [200,"REVALLINO RAMADHAN",76.17,74,77.33,72.33,79.67],
+    [201,"SABRINA ZYANCA KINANTHI",84.5,87.33,84.33,85.5,88.5],
+    [202,"SALSA NABILLA FENITA",77.67,77.33,80.67,81.5,83.67],
+    [203,"SITI AISYAH",84.5,79.33,83.17,83.33,86.83],
+    [204,"SYALESIA GHANIA RAMADHANI",81.5,81.67,82.33,83.5,86.83],
+    [205,"SYARIFAH ZAHRA",86.33,87.33,85.5,88.33,88.5],
+    [206,"SYITA SHAFA AZZAHRA",86.67,84.67,87.17,89.17,88.67]
+  ];
+
+  // bangun array object + hitung rata2 sidanira
+  let students = rawData.map(s => {
+    let smtArr = [s[2], s[3], s[4], s[5], s[6]];
+    let total = smtArr.reduce((a,b) => a + b, 0);
+    let rata = total / 5;
+    return {
+      nama: s[1],
+      smt1: s[2],
+      smt2: s[3],
+      smt3: s[4],
+      smt4: s[5],
+      smt5: s[6],
+      nilaiSidanira: rata
+    };
+  });
+
+  // urutkan berdasarkan nilaiSidanira tertinggi ke terendah
+  students.sort((a,b) => b.nilaiSidanira - a.nilaiSidanira);
+
+  // hitung statistik
+  const tertinggi = students[0].nilaiSidanira.toFixed(2);
+  const terendah = students[students.length-1].nilaiSidanira.toFixed(2);
+  const rataKeseluruhan = (students.reduce((sum, s) => sum + s.nilaiSidanira, 0) / students.length).toFixed(2);
+
+  // tampilkan stats
+  document.getElementById('statsGrid').innerHTML = `
+    <div class="stat-card"><i class="fas fa-arrow-up"></i><div><div class="stat-label">Nilai Tertinggi</div><div class="stat-value">${tertinggi}</div></div></div>
+    <div class="stat-card"><i class="fas fa-arrow-down"></i><div><div class="stat-label">Nilai Terendah</div><div class="stat-value">${terendah}</div></div></div>
+    <div class="stat-card"><i class="fas fa-chart-simple"></i><div><div class="stat-label">Rata-rata Sekolah</div><div class="stat-value">${rataKeseluruhan}</div></div></div>
+    <div class="stat-card"><i class="fas fa-user-graduate"></i><div><div class="stat-label">Total Siswa</div><div class="stat-value">206</div></div></div>
+  `;
+
+  const tbody = document.getElementById('tableBody');
+  students.forEach((siswa, idx) => {
+    let rank = idx + 1;
+    let rankClass = '';
+    if (rank === 1) rankClass = 'rank-1';
+    else if (rank === 2) rankClass = 'rank-2';
+    else if (rank === 3) rankClass = 'rank-3';
+    
+    const row = tbody.insertRow();
+    // kolom peringkat
+    const rankCell = row.insertCell(0);
+    rankCell.className = 'rank-cell';
+    rankCell.innerHTML = `<span class="rank-number ${rankClass}">${rank}</span>`;
+    
+    // nama
+    const namaCell = row.insertCell(1);
+    namaCell.innerHTML = `<span class="nama-siswa">${siswa.nama}</span>`;
+    
+    // nilai sidanira
+    const nilaiCell = row.insertCell(2);
+    nilaiCell.innerHTML = `<span class="nilai-badge">${siswa.nilaiSidanira.toFixed(2)}</span>`;
+    
+    // smt1 - smt5
+    row.insertCell(3).innerHTML = `<span class="smt-badge">${siswa.smt1.toFixed(2)}</span>`;
+    row.insertCell(4).innerHTML = `<span class="smt-badge">${siswa.smt2.toFixed(2)}</span>`;
+    row.insertCell(5).innerHTML = `<span class="smt-badge">${siswa.smt3.toFixed(2)}</span>`;
+    row.insertCell(6).innerHTML = `<span class="smt-badge">${siswa.smt4.toFixed(2)}</span>`;
+    row.insertCell(7).innerHTML = `<span class="smt-badge">${siswa.smt5.toFixed(2)}</span>`;
+  });
+</script>
+</body>
+</html>
