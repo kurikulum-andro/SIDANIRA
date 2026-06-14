@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Peringkat SIDANIRA | SMPN 247 Jakarta</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -14,10 +14,10 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(125deg, #eef2f9 0%, #e0e9f4 100%);
-      padding: 2rem 1.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f4f7fc;
       color: #1a2c3e;
+      padding: 2rem 1.5rem;
     }
 
     .container {
@@ -25,20 +25,19 @@
       margin: 0 auto;
     }
 
-    /* header modern */
-    .hero {
+    /* header premium */
+    .header {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
-    .hero h1 {
-      font-size: 2.4rem;
+    .header h1 {
+      font-size: 2.2rem;
       font-weight: 800;
-      background: linear-gradient(145deg, #1f5e8c, #134b6f);
+      background: linear-gradient(135deg, #1a5d82, #0e3b52);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: -0.5px;
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -46,213 +45,218 @@
       justify-content: center;
     }
 
-    .hero h1 i {
+    .header h1 i {
       background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
       color: #2c7da0;
-      font-size: 2rem;
     }
 
-    .sub {
-      color: #2c5a74;
-      font-weight: 500;
+    .subhead {
+      color: #4a627a;
       margin-top: 8px;
-      font-size: 1rem;
+      font-weight: 500;
     }
 
-    /* stat card grid */
+    /* stat cards */
     .stats-grid {
       display: flex;
       justify-content: center;
-      gap: 1.8rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      margin: 2rem 0 2.5rem;
+      margin: 2rem 0;
     }
 
     .stat-card {
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      border-radius: 2rem;
-      padding: 1rem 2rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 0 0 1px rgba(255,255,255,0.5);
+      background: white;
+      border-radius: 1.5rem;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
       display: flex;
-      align-items: baseline;
-      gap: 12px;
-      transition: all 0.2s;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid #e9edf2;
     }
 
     .stat-card i {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: #2c7da0;
     }
 
-    .stat-label {
-      font-weight: 600;
-      color: #1f4e6e;
+    .stat-info .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6c86a0;
     }
 
-    .stat-value {
+    .stat-info .value {
+      font-size: 1.5rem;
       font-weight: 800;
-      font-size: 1.7rem;
-      color: #0f3b54;
-      line-height: 1;
+      color: #1e4a6e;
+      line-height: 1.2;
     }
 
-    /* tabel premium */
+    /* search & filter */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f8fafd;
+      border-radius: 2rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .search-box i {
+      color: #8ba0bc;
+      margin-right: 8px;
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      padding: 0.5rem;
+      width: 240px;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .rank-info {
+      font-size: 0.85rem;
+      background: #eef3fa;
+      padding: 0.3rem 1rem;
+      border-radius: 2rem;
+      color: #2c7da0;
+    }
+
+    /* table premium */
     .table-wrapper {
       background: white;
-      border-radius: 2rem;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
-      overflow: hidden;
-      transition: all 0.2s;
+      border-radius: 1.5rem;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      overflow-x: auto;
+      border: 1px solid #eef2f8;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      min-width: 800px;
     }
 
     th {
-      background: #1f5e8c;
+      background: #1a5d82;
       color: white;
       padding: 1rem 0.8rem;
       font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.3px;
+      font-size: 0.85rem;
+      position: sticky;
+      top: 0;
     }
 
     td {
-      padding: 0.9rem 0.8rem;
-      border-bottom: 1px solid #eef2f8;
+      padding: 0.8rem 0.7rem;
+      border-bottom: 1px solid #eff3f8;
       vertical-align: middle;
     }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
-
     tr:hover td {
-      background: #f8fbfe;
+      background: #fafcff;
     }
 
-    /* peringkat dengan medali */
-    .rank-cell {
-      font-weight: 800;
-      text-align: center;
-      width: 70px;
-    }
-
-    .rank-number {
+    .rank-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 40px;
       font-weight: 800;
-      background: #eef2fa;
-      color: #1f5e8c;
+      background: #eff3f8;
+      color: #1a5d82;
     }
 
-    .rank-1 {
-      background: linear-gradient(145deg, #ffd966, #ffb347);
-      color: #4a2e00;
-      box-shadow: 0 2px 8px rgba(255,180,0,0.3);
-    }
+    .rank-1 { background: linear-gradient(145deg, #ffd966, #ffb347); color: #4a2e00; }
+    .rank-2 { background: linear-gradient(145deg, #e0e0e0, #c0c0c0); color: #2c2c2c; }
+    .rank-3 { background: linear-gradient(145deg, #e0b07f, #cd7f32); color: #2f1d0a; }
 
-    .rank-2 {
-      background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
-      color: #2c2c2c;
-    }
-
-    .rank-3 {
-      background: linear-gradient(145deg, #e0b07f, #cd7f32);
-      color: #2f1d0a;
+    .nilai-highlight {
+      font-weight: 700;
+      background: #eef3fa;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      display: inline-block;
+      color: #1a5d82;
     }
 
     .nama-siswa {
-      font-weight: 700;
-      color: #1f3e54;
-    }
-
-    .nilai-badge {
-      font-weight: 800;
-      background: #eef2fa;
-      padding: 0.25rem 0.9rem;
-      border-radius: 30px;
-      display: inline-block;
-      font-size: 0.9rem;
-      color: #1f5e8c;
-    }
-
-    .smt-badge {
-      font-family: monospace;
       font-weight: 600;
-      background: #f4f7fb;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      display: inline-block;
+      color: #1f3e54;
     }
 
     footer {
       text-align: center;
       margin-top: 2rem;
-      font-size: 0.75rem;
-      color: #5e7e97;
+      font-size: 0.7rem;
+      color: #8ba0bc;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
       body { padding: 1rem; }
-      .hero h1 { font-size: 1.7rem; }
-      .stat-value { font-size: 1.2rem; }
-      th, td { font-size: 0.7rem; padding: 0.5rem 0.3rem; }
-      .rank-number { width: 30px; height: 30px; font-size: 0.8rem; }
-      .nilai-badge { font-size: 0.7rem; padding: 0.1rem 0.5rem; }
+      .header h1 { font-size: 1.5rem; }
+      .stat-card { padding: 0.4rem 1rem; }
+      .stat-info .value { font-size: 1rem; }
+      td, th { font-size: 0.7rem; padding: 0.5rem 0.3rem; }
+      .rank-badge { width: 28px; height: 28px; font-size: 0.7rem; }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <div class="hero">
-    <h1>
-      <i class="fas fa-crown"></i> 
-      Peringkat Nilai SIDANIRA
-      <i class="fas fa-chart-line"></i>
-    </h1>
-    <div class="sub">SMP Negeri 247 Jakarta Selatan · Rata-rata Semester 1–5 (Tertinggi → Terendah)</div>
+  <div class="header">
+    <h1><i class="fas fa-chart-line"></i> Peringkat SIDANIRA <i class="fas fa-school"></i></h1>
+    <div class="subhead">SMP Negeri 247 Jakarta Selatan · Rata-rata Semester 1 s.d 5</div>
+    <div class="subhead" style="font-size:0.8rem;">Tertinggi → Terendah · 206 Siswa</div>
   </div>
 
-  <div class="stats-grid" id="statsGrid"></div>
+  <div class="stats-grid" id="statsPanel"></div>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Cari nama siswa..." autocomplete="off">
+    </div>
+    <div class="rank-info" id="resultInfo"></div>
+  </div>
 
   <div class="table-wrapper">
     <table id="rankingTable">
       <thead>
-        <tr>
-          <th>Peringkat</th>
-          <th>Nama Peserta Didik</th>
-          <th>Nilai SIDANIRA</th>
-          <th>SMT 1</th>
-          <th>SMT 2</th>
-          <th>SMT 3</th>
-          <th>SMT 4</th>
-          <th>SMT 5</th>
-        </tr>
+        <tr><th>Peringkat</th><th>No. Urut</th><th>Nama Siswa</th><th>Nilai SIDANIRA</th><th>SMT 1</th><th>SMT 2</th><th>SMT 3</th><th>SMT 4</th><th>SMT 5</th></tr>
       </thead>
       <tbody id="tableBody"></tbody>
     </table>
   </div>
-  <footer>
-    <i class="fas fa-chart-simple"></i> Berdasarkan data resmi SIDANIRA · Rata-rata 5 semester
-  </footer>
+  <footer><i class="fas fa-arrow-trend-down"></i> Berdasarkan data resmi SIDANIRA · Rata-rata 5 semester</footer>
 </div>
 
 <script>
-  // Data siswa lengkap (noUrut hanya untuk referensi internal, TIDAK DITAMPILKAN)
-  // [noUrut, nama, smt1, smt2, smt3, smt4, smt5]
-  const rawData = [
+  // Data asli 206 siswa dari file [noUrut, nama, smt1, smt2, smt3, smt4, smt5]
+  const rawStudents = [
     [1,"ADINDA SALSABILA NAFITRI",78.17,77,79,79.83,81.5],
     [2,"ADITIA PUTRA MUBAROK",83.17,87.67,86,87.83,87.17],
     [3,"ADLI FATURAHMAN",74.67,74.5,75.67,78.17,76.83],
@@ -461,12 +465,12 @@
     [206,"SYITA SHAFA AZZAHRA",86.67,84.67,87.17,89.17,88.67]
   ];
 
-  // bangun array object + hitung rata2 sidanira
-  let students = rawData.map(s => {
-    let smtArr = [s[2], s[3], s[4], s[5], s[6]];
-    let total = smtArr.reduce((a,b) => a + b, 0);
+  // Hitung nilai rata2 SIDANIRA
+  let students = rawStudents.map(s => {
+    let total = s[2] + s[3] + s[4] + s[5] + s[6];
     let rata = total / 5;
     return {
+      noUrut: s[0],
       nama: s[1],
       smt1: s[2],
       smt2: s[3],
@@ -477,51 +481,60 @@
     };
   });
 
-  // urutkan berdasarkan nilaiSidanira tertinggi ke terendah
+  // Urutkan tertinggi ke terendah
   students.sort((a,b) => b.nilaiSidanira - a.nilaiSidanira);
 
-  // hitung statistik
+  // Statistik
   const tertinggi = students[0].nilaiSidanira.toFixed(2);
-  const terendah = students[students.length-1].nilaiSidanira.toFixed(2);
-  const rataKeseluruhan = (students.reduce((sum, s) => sum + s.nilaiSidanira, 0) / students.length).toFixed(2);
+  const terendah = students[205].nilaiSidanira.toFixed(2);
+  const rataRata = (students.reduce((sum, s) => sum + s.nilaiSidanira, 0) / 206).toFixed(2);
 
-  // tampilkan stats
-  document.getElementById('statsGrid').innerHTML = `
-    <div class="stat-card"><i class="fas fa-arrow-up"></i><div><div class="stat-label">Nilai Tertinggi</div><div class="stat-value">${tertinggi}</div></div></div>
-    <div class="stat-card"><i class="fas fa-arrow-down"></i><div><div class="stat-label">Nilai Terendah</div><div class="stat-value">${terendah}</div></div></div>
-    <div class="stat-card"><i class="fas fa-chart-simple"></i><div><div class="stat-label">Rata-rata Sekolah</div><div class="stat-value">${rataKeseluruhan}</div></div></div>
-    <div class="stat-card"><i class="fas fa-user-graduate"></i><div><div class="stat-label">Total Siswa</div><div class="stat-value">206</div></div></div>
+  document.getElementById('statsPanel').innerHTML = `
+    <div class="stat-card"><i class="fas fa-arrow-up"></i><div class="stat-info"><div class="label">Nilai Tertinggi</div><div class="value">${tertinggi}</div></div></div>
+    <div class="stat-card"><i class="fas fa-arrow-down"></i><div class="stat-info"><div class="label">Nilai Terendah</div><div class="value">${terendah}</div></div></div>
+    <div class="stat-card"><i class="fas fa-chart-line"></i><div class="stat-info"><div class="label">Rata - Rata</div><div class="value">${rataRata}</div></div></div>
+    <div class="stat-card"><i class="fas fa-users"></i><div class="stat-info"><div class="label">Total Siswa</div><div class="value">206</div></div></div>
   `;
 
+  // Render table
+  let currentFilter = '';
   const tbody = document.getElementById('tableBody');
-  students.forEach((siswa, idx) => {
-    let rank = idx + 1;
-    let rankClass = '';
-    if (rank === 1) rankClass = 'rank-1';
-    else if (rank === 2) rankClass = 'rank-2';
-    else if (rank === 3) rankClass = 'rank-3';
-    
-    const row = tbody.insertRow();
-    // kolom peringkat
-    const rankCell = row.insertCell(0);
-    rankCell.className = 'rank-cell';
-    rankCell.innerHTML = `<span class="rank-number ${rankClass}">${rank}</span>`;
-    
-    // nama
-    const namaCell = row.insertCell(1);
-    namaCell.innerHTML = `<span class="nama-siswa">${siswa.nama}</span>`;
-    
-    // nilai sidanira
-    const nilaiCell = row.insertCell(2);
-    nilaiCell.innerHTML = `<span class="nilai-badge">${siswa.nilaiSidanira.toFixed(2)}</span>`;
-    
-    // smt1 - smt5
-    row.insertCell(3).innerHTML = `<span class="smt-badge">${siswa.smt1.toFixed(2)}</span>`;
-    row.insertCell(4).innerHTML = `<span class="smt-badge">${siswa.smt2.toFixed(2)}</span>`;
-    row.insertCell(5).innerHTML = `<span class="smt-badge">${siswa.smt3.toFixed(2)}</span>`;
-    row.insertCell(6).innerHTML = `<span class="smt-badge">${siswa.smt4.toFixed(2)}</span>`;
-    row.insertCell(7).innerHTML = `<span class="smt-badge">${siswa.smt5.toFixed(2)}</span>`;
+  const searchInput = document.getElementById('searchInput');
+  const resultInfo = document.getElementById('resultInfo');
+
+  function renderTable() {
+    const filter = currentFilter.toLowerCase();
+    let filtered = students;
+    if (filter) {
+      filtered = students.filter(s => s.nama.toLowerCase().includes(filter));
+    }
+    resultInfo.innerText = `${filtered.length} data ditemukan`;
+    tbody.innerHTML = '';
+    filtered.forEach((siswa, idx) => {
+      const rank = students.findIndex(s => s.noUrut === siswa.noUrut) + 1;
+      let rankClass = '';
+      if (rank === 1) rankClass = 'rank-1';
+      else if (rank === 2) rankClass = 'rank-2';
+      else if (rank === 3) rankClass = 'rank-3';
+      const row = tbody.insertRow();
+      row.insertCell(0).innerHTML = `<span class="rank-badge ${rankClass}">${rank}</span>`;
+      row.insertCell(1).innerText = siswa.noUrut;
+      row.insertCell(2).innerHTML = `<span class="nama-siswa">${siswa.nama}</span>`;
+      row.insertCell(3).innerHTML = `<span class="nilai-highlight">${siswa.nilaiSidanira.toFixed(2)}</span>`;
+      row.insertCell(4).innerText = siswa.smt1.toFixed(2);
+      row.insertCell(5).innerText = siswa.smt2.toFixed(2);
+      row.insertCell(6).innerText = siswa.smt3.toFixed(2);
+      row.insertCell(7).innerText = siswa.smt4.toFixed(2);
+      row.insertCell(8).innerText = siswa.smt5.toFixed(2);
+    });
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    currentFilter = e.target.value;
+    renderTable();
   });
+
+  renderTable();
 </script>
 </body>
 </html>
